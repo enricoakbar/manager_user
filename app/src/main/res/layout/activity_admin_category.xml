@@ -30,11 +30,19 @@
         android:gravity="center"
         android:layout_marginTop="45dp">
 
+
         <ImageView
-            android:id="@+id/polic"
+        android:id="@+id/daftar_pegawai"
+        android:layout_width="wrap_content"
+        android:layout_height="70dp"
+        android:layout_marginLeft="40dp"
+        android:src="@drawable/daftarpegawai"
+        />
+        <ImageView
+            android:id="@+id/news"
             android:layout_width="wrap_content"
             android:layout_height="80dp"
-            android:src="@drawable/polic"
+            android:src="@drawable/news"
             />
 
     </LinearLayout>

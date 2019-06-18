@@ -7,20 +7,22 @@ import android.view.View;
 import android.widget.ImageView;
 
 public class AdminCategoryActivity extends AppCompatActivity {
-    private ImageView polic;
+    private ImageView daftarPegawai, news;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_category);
 
-        polic = (ImageView) findViewById(R.id.polic);
+        daftarPegawai = (ImageView) findViewById(R.id.daftar_pegawai);
+        news = (ImageView) findViewById(R.id.news);
 
-        polic.setOnClickListener(new View.OnClickListener() {
+
+        news.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View v) {
                 Intent intent = new Intent(AdminCategoryActivity.this, AdminAddNewProductActivity.class);
-                intent.putExtra("category", "polic");
+                intent.putExtra("berita", "News");
                 startActivity(intent);
             }
         });
