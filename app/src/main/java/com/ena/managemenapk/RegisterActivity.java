@@ -24,7 +24,7 @@ import java.util.HashMap;
 public class RegisterActivity extends AppCompatActivity
 {
     private Button BuatAkunButton;
-    private EditText InputUsername, InputNip, InputPassword;
+    private EditText InputName, InputUsername, InputNip, InputPassword;
     private ProgressDialog loadingBar;
 
     @Override
@@ -34,6 +34,7 @@ public class RegisterActivity extends AppCompatActivity
         setContentView(R.layout.activity_register);
 
         BuatAkunButton = (Button) findViewById(R.id.register_btn);
+        InputName = (EditText) findViewById(R.id.register_name_input);
         InputUsername = (EditText) findViewById(R.id.register_username_input);
         InputPassword = (EditText) findViewById(R.id.register_password_input);
         InputNip = (EditText) findViewById(R.id.register_nip_input);
@@ -50,21 +51,26 @@ public class RegisterActivity extends AppCompatActivity
 
     private void BuatAkun()
     {
+        String name = InputName.getText().toString();
         String username = InputUsername.getText().toString();
         String nip = InputNip.getText().toString();
         String password = InputPassword.getText().toString();
 
-        if (TextUtils.isEmpty(username))
+        if (TextUtils.isEmpty(name))
         {
-            Toast.makeText(this, "Nama",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Nama Harap Diisi",Toast.LENGTH_SHORT).show();
+        }
+        else if (TextUtils.isEmpty(username))
+        {
+            Toast.makeText(this, "Username Harap Diisi",Toast.LENGTH_SHORT).show();
         }
         else if (TextUtils.isEmpty(nip))
         {
-            Toast.makeText(this, "NIP",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "NIP Harap Diisi",Toast.LENGTH_SHORT).show();
         }
         else if (TextUtils.isEmpty(password))
         {
-            Toast.makeText(this, "Password",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Password Harap Diisi",Toast.LENGTH_SHORT).show();
         }
         else 
         {
@@ -73,12 +79,12 @@ public class RegisterActivity extends AppCompatActivity
             loadingBar.setCanceledOnTouchOutside(false);
             loadingBar.show();
             
-            Validateusername(username, nip, password);
+            Validateusername(name, username, nip, password);
         }
 
     }
 
-    private void Validateusername(final String username, final String nip, final String password)
+    private void Validateusername(final String name, final String username, final String nip, final String password)
     {
         final DatabaseReference RootRef;
         RootRef = FirebaseDatabase.getInstance().getReference();
@@ -90,6 +96,7 @@ public class RegisterActivity extends AppCompatActivity
                 if (!(dataSnapshot.child("Users").child(username).exists()))
                 {
                     HashMap<String, Object> userdataMap = new HashMap<>();
+                    userdataMap.put("name", name);
                     userdataMap.put("username", username);
                     userdataMap.put("password", password);
                     userdataMap.put("nip", nip);

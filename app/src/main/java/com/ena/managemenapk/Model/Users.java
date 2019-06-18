@@ -1,17 +1,19 @@
 package com.ena.managemenapk.Model;
 
 public class Users {
-    public String username, nip, password;
+    public String username, nip, password, image, name;
 
     public Users()
     {
 
     }
 
-    public Users(String username, String nip, String password){
-        this.username= username;
-        this.nip= nip;
-        this.password= password;
+    public Users(String username, String nip, String password, String image, String name) {
+        this.username = username;
+        this.nip = nip;
+        this.password = password;
+        this.image = image;
+        this.name = name;
     }
 
     public String getUsername() {
@@ -36,5 +38,21 @@ public class Users {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }
