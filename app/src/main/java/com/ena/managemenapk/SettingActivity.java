@@ -34,7 +34,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class SettingActivity extends AppCompatActivity {
     private CircleImageView profileImageView;
-    private EditText nameEditText, usernameEditText, nipEditText;
+    private EditText nameEditText, nipEditText;
     private TextView profileChangeTextBtn, closeTextBtn, saveTextBtn;
     private Uri imageUri;
     private String myUrl = "";
@@ -50,13 +50,12 @@ public class SettingActivity extends AppCompatActivity {
         storageProfilePictureRef = FirebaseStorage.getInstance().getReference().child("Profile Picture");
         profileImageView = (CircleImageView) findViewById(R.id.setting_profile_image);
         nameEditText = (EditText)findViewById(R.id.setting_name);
-        usernameEditText = (EditText)findViewById(R.id.setting_username);
         nipEditText = (EditText)findViewById(R.id.setting_nip);
         profileChangeTextBtn = (TextView)findViewById(R.id.profil_image_change_btn);
         closeTextBtn = (TextView)findViewById(R.id.close_setting_btn);
         saveTextBtn = (TextView)findViewById(R.id.update_account_setting_btn);
 
-        userInfoDisplay(profileImageView, usernameEditText, nipEditText, nameEditText);
+        userInfoDisplay(profileImageView, nameEditText, nipEditText);
 
         closeTextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -93,7 +92,6 @@ public class SettingActivity extends AppCompatActivity {
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Users");
         HashMap<String, Object> userMap = new HashMap<>();
         userMap.put("name", nameEditText.getText().toString());
-        userMap.put("username", usernameEditText.getText().toString());
         userMap.put("nip", nipEditText.getText().toString());
         ref.child(Prevalent.currentOnlineUser.getUsername()).updateChildren(userMap);
 
@@ -103,7 +101,7 @@ public class SettingActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode==CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE && resultCode==RESULT_OK && data!=null)
@@ -114,6 +112,7 @@ public class SettingActivity extends AppCompatActivity {
         }
         else {
             Toast.makeText(this, "Error, Try Again.", Toast.LENGTH_SHORT).show();
+
             startActivity(new Intent(SettingActivity.this, SettingActivity.class));
             finish();
         }
@@ -122,9 +121,6 @@ public class SettingActivity extends AppCompatActivity {
     private void userInfoSaved() {
         if (TextUtils.isEmpty(nameEditText.getText().toString())){
             Toast.makeText(this, "Harap Isi Nama.", Toast.LENGTH_SHORT).show();
-        }
-        else if (TextUtils.isEmpty(usernameEditText.getText().toString())){
-            Toast.makeText(this, "Harap Isi Username.", Toast.LENGTH_SHORT).show();
         }
         else if (TextUtils.isEmpty(nipEditText.getText().toString())){
             Toast.makeText(this, "Harap Isi NIP.", Toast.LENGTH_SHORT).show();
@@ -146,6 +142,7 @@ public class SettingActivity extends AppCompatActivity {
             final StorageReference fileRef = storageProfilePictureRef
                     .child(Prevalent.currentOnlineUser.getUsername() + ".jpg");
             uploadTask = fileRef.putFile(imageUri);
+
             uploadTask.continueWithTask(new Continuation() {
                 @Override
                 public Object then(@NonNull Task task) throws Exception {
@@ -165,9 +162,9 @@ public class SettingActivity extends AppCompatActivity {
                         myUrl = downloadurl.toString();
 
                         DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Users");
+
                         HashMap<String, Object> userMap = new HashMap<>();
                         userMap.put("name", nameEditText.getText().toString());
-                        userMap.put("username", usernameEditText.getText().toString());
                         userMap.put("nip", nipEditText.getText().toString());
                         userMap.put("image", myUrl);
                         ref.child(Prevalent.currentOnlineUser.getUsername()).updateChildren(userMap);
@@ -192,7 +189,7 @@ public class SettingActivity extends AppCompatActivity {
         }
     }
 
-    private void userInfoDisplay(final CircleImageView profileImageView, final EditText usernameEditText, final EditText nipEditText, final EditText nameEditText) {
+    private void userInfoDisplay(final CircleImageView profileImageView, final EditText nameEditText, final EditText nipEditText) {
         DatabaseReference UsersRef = FirebaseDatabase.getInstance().getReference().child("Users").child(Prevalent.currentOnlineUser.getUsername());
         UsersRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -202,14 +199,12 @@ public class SettingActivity extends AppCompatActivity {
                     if (dataSnapshot.child("image").exists())
                     {
                         String image = dataSnapshot.child("image").getValue().toString();
-                        String username = dataSnapshot.child("username").getValue().toString();
                         String name = dataSnapshot.child("name").getValue().toString();
                         String nip = dataSnapshot.child("nip").getValue().toString();
 
                         Picasso.get().load(image).into(profileImageView);
-                        usernameEditText.setText(username);
-                        nipEditText.setText(nip);
                         nameEditText.setText(name);
+                        nipEditText.setText(nip);
 
                     }
                 }
