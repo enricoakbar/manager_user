@@ -31,7 +31,7 @@
                     android:textSize="17sp"
                     android:textStyle="bold"
                     android:layout_alignParentStart="true"
-                    />
+                    android:layout_alignParentLeft="true" />
 
                 <TextView
                     android:id="@+id/update_account_setting_btn"
@@ -43,7 +43,7 @@
                     android:textStyle="bold"
                     android:layout_marginRight="10dp"
                     android:layout_alignParentEnd="true"
-                    />
+                    android:layout_alignParentRight="true" />
 
             </RelativeLayout>
 
@@ -78,8 +78,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/profil_image_change_btn"
+        android:layout_marginTop="55dp"
+        android:layout_marginBottom="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginLeft="15dp"
         android:hint="Nama Lengkap..."
-        android:layout_margin="15dp"
+        android:background="@drawable/input_design"
+        android:inputType="text"
         android:padding="10dp"/>
 
     <EditText
@@ -87,8 +92,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/setting_name"
+        android:layout_marginRight="15dp"
+        android:layout_marginLeft="15dp"
         android:hint="NIP..."
-        android:layout_margin="15dp"
+        android:inputType="number"
+        android:background="@drawable/input_design"
         android:padding="10dp"/>
 
 

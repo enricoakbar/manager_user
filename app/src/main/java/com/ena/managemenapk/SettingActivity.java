@@ -46,7 +46,6 @@ public class SettingActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting);
-
         storageProfilePictureRef = FirebaseStorage.getInstance().getReference().child("Profile Picture");
         profileImageView = (CircleImageView) findViewById(R.id.setting_profile_image);
         nameEditText = (EditText)findViewById(R.id.setting_name);

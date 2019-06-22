@@ -17,6 +17,14 @@ public class AdminCategoryActivity extends AppCompatActivity {
         daftarPegawai = (ImageView) findViewById(R.id.daftar_pegawai);
         news = (ImageView) findViewById(R.id.news);
 
+        daftarPegawai.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(AdminCategoryActivity.this, ListPegawaiActivity.class);
+                startActivity(intent);
+            }
+        });
+
 
         news.setOnClickListener(new View.OnClickListener() {
             @Override
