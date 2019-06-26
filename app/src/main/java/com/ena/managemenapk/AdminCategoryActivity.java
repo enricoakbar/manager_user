@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.ImageView;
 
 public class AdminCategoryActivity extends AppCompatActivity {
-    private ImageView daftarPegawai, news;
+    private ImageView daftarPegawai, news, task;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,6 +16,7 @@ public class AdminCategoryActivity extends AppCompatActivity {
 
         daftarPegawai = (ImageView) findViewById(R.id.daftar_pegawai);
         news = (ImageView) findViewById(R.id.news);
+        task = (ImageView)findViewById(R.id.task);
 
         daftarPegawai.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -35,5 +36,12 @@ public class AdminCategoryActivity extends AppCompatActivity {
             }
         });
 
+        task.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(AdminCategoryActivity.this, TambahTugasActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }

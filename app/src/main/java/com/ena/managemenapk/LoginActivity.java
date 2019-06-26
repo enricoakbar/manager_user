@@ -64,6 +64,7 @@ public class LoginActivity extends AppCompatActivity
                 LoginButton.setText("Login Admin");
                 AdminLink.setVisibility(View.INVISIBLE);
                 NotAdminLink.setVisibility(View.VISIBLE);
+                chkBoxRememberMe.setVisibility(View.INVISIBLE);
                 parentDbName = "Admins";
             }
         });
@@ -74,6 +75,7 @@ public class LoginActivity extends AppCompatActivity
                 LoginButton.setText("Login");
                 AdminLink.setVisibility(View.VISIBLE);
                 NotAdminLink.setVisibility(View.INVISIBLE);
+                chkBoxRememberMe.setVisibility(View.VISIBLE);
                 parentDbName = "Users";
             }
         });

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    tools:context=".TugasTambahanActivity">
+
+    <EditText
+        android:id="@+id/judultugastambahan"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginLeft="28dp"
+        android:layout_marginEnd="28dp"
+        android:layout_marginRight="28dp"
+        android:layout_marginBottom="41dp"
+        android:background="@drawable/input_design"
+        android:ems="10"
+        android:hint="Judul Tugas Tambahan"
+        android:inputType="text"
+        android:padding="15dp"
+        android:textColor="@color/coloritem"
+        android:textColorHint="@color/abuabu"
+        app:layout_constraintBottom_toTopOf="@+id/deskripsitugastambahan"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/usernametugastambahan" />
+
+    <EditText
+        android:id="@+id/deskripsitugastambahan"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginLeft="28dp"
+        android:layout_marginEnd="28dp"
+        android:layout_marginRight="28dp"
+        android:layout_marginBottom="214dp"
+        android:background="@drawable/input_design"
+        android:ems="10"
+        android:hint="Deskripsi Tugas Wajib"
+        android:inputType="textMultiLine"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:textColor="@color/coloritem"
+        android:textColorHint="@color/abuabu"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/tugastambahanbtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/judultugastambahan" />
+
+    <Button
+        android:id="@+id/tugastambahanbtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="47dp"
+        android:background="@drawable/buttons"
+        android:padding="10dp"
+        android:text="Tambah Tugas Tambahan"
+        android:textColor="@color/coloritem"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/deskripsitugastambahan" />
+
+    <TextView
+        android:id="@+id/usernametugastambahan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="31dp"
+        android:layout_marginBottom="51dp"
+        android:text="NamaUsername"
+        android:textColor="@color/coloritem"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/judultugastambahan"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</android.support.constraint.ConstraintLayout>

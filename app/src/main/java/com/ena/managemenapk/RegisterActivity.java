@@ -20,6 +20,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.HashMap;
+import java.util.HashSet;
 
 public class RegisterActivity extends AppCompatActivity
 {
@@ -100,7 +101,6 @@ public class RegisterActivity extends AppCompatActivity
                     userdataMap.put("username", username);
                     userdataMap.put("password", password);
                     userdataMap.put("nip", nip);
-
                     RootRef.child("Users").child(username).updateChildren(userdataMap)
                             .addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
