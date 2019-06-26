@@ -3,6 +3,7 @@ package com.ena.managemenapk;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -12,6 +13,8 @@ import android.widget.Toast;
 import com.ena.managemenapk.Prevalent.Prevalent;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
+import org.w3c.dom.Text;
 
 import java.util.HashMap;
 
@@ -35,9 +38,21 @@ public class TugasWajibActivity extends AppCompatActivity {
         tugaswajibbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                tambahtugaswajib();
+                tambahtugaswajibklik();
             }
         });
+    }
+
+    private void tambahtugaswajibklik() {
+        if (TextUtils.isEmpty(judultugaswajib.getText().toString())){
+            Toast.makeText(this, "Judul Harap Diisi", Toast.LENGTH_SHORT).show();
+        }
+        else if (TextUtils.isEmpty(deskripsitugaswajib.getText().toString())){
+            Toast.makeText(this, "Deskripsi Harap Isi", Toast.LENGTH_SHORT).show();
+        }
+        else{
+            tambahtugaswajib();
+        }
     }
 
     private void tambahtugaswajib() {
