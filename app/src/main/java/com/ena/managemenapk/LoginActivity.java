@@ -25,7 +25,7 @@ import io.paperdb.Paper;
 
 public class LoginActivity extends AppCompatActivity
 {
-    private EditText InputUsername, InputPassword;
+    private EditText InputUserName, InputPassword;
     private Button LoginButton;
     private ProgressDialog loadingBar;
     private TextView AdminLink, NotAdminLink;
@@ -42,7 +42,7 @@ public class LoginActivity extends AppCompatActivity
 
         LoginButton = (Button) findViewById(R.id.login_btn);
         InputPassword = (EditText) findViewById(R.id.login_password_input);
-        InputUsername = (EditText) findViewById(R.id.login_username_input);
+        InputUserName = (EditText) findViewById(R.id.login_username_input);
         loadingBar = new ProgressDialog(this);
         AdminLink = (TextView) findViewById(R.id.admin_panel_link);
         NotAdminLink = (TextView) findViewById(R.id.not_admin_panel_link);
@@ -84,12 +84,12 @@ public class LoginActivity extends AppCompatActivity
 
     private void LoginUser()
     {
-        String username = InputUsername.getText().toString();
+        String username = InputUserName.getText().toString();
         String password = InputPassword.getText().toString();
 
         if (TextUtils.isEmpty(username))
         {
-            Toast.makeText(this, "Username belum diisi",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "NIP belum diisi",Toast.LENGTH_SHORT).show();
         }
 
         else if (TextUtils.isEmpty(password))
@@ -111,7 +111,7 @@ public class LoginActivity extends AppCompatActivity
     {
         if (chkBoxRememberMe.isChecked())
         {
-            Paper.book().write(Prevalent.UserNameKey, username);
+            Paper.book().write(Prevalent.UserNipKey, username);
             Paper.book().write(Prevalent.UserPasswordKey, password);
         }
 

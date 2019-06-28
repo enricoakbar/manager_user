@@ -84,7 +84,7 @@ public class TambahTugasActivity extends AppCompatActivity {
                 }
                 else
                 {
-                    Toast.makeText(TambahTugasActivity.this, "Username Tidak Ditemukan.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(TambahTugasActivity.this, "Nama Pegawai Tidak Ditemukan.", Toast.LENGTH_SHORT).show();
                     progresBar.dismiss();
                 }
             }
@@ -99,7 +99,7 @@ public class TambahTugasActivity extends AppCompatActivity {
     private void tugaswajib() {
         String username = usernamepegawai.getText().toString();
         if (TextUtils.isEmpty(username)){
-            Toast.makeText(this, "Harap Isi Username Pegawai.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Harap Isi Nama Pegawai.", Toast.LENGTH_SHORT).show();
         }
         else
         {

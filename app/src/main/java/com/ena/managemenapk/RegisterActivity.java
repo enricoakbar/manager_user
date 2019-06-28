@@ -130,8 +130,9 @@ public class RegisterActivity extends AppCompatActivity
                     loadingBar.dismiss();
                     Toast.makeText(RegisterActivity.this,"Please try again",Toast.LENGTH_SHORT).show();
 
-                    Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
+                    Intent intent = new Intent(RegisterActivity.this, AdminCategoryActivity.class);
                     startActivity(intent);
+                    finish();
                 }
 
 

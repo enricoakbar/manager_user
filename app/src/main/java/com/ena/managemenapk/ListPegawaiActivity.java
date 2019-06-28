@@ -48,7 +48,7 @@ public class ListPegawaiActivity extends AppCompatActivity {
                 {
 
                     users = ds.getValue(Users.class);
-                    list.add(users.getName().toString());
+                    list.add(users.getName().toString()+" "+users.getUsername().toString());
                 }
                 listpegawai.setAdapter(adapter);
 

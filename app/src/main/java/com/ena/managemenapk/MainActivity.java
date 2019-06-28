@@ -24,7 +24,7 @@ import io.paperdb.Paper;
 
 public class MainActivity extends AppCompatActivity
 {
-    private Button joinNowButton, loginButton;
+    private Button loginButton;
     private ProgressDialog loadingBar;
 
     @Override
@@ -32,7 +32,6 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        joinNowButton =(Button) findViewById(R.id.main_join_now_btn);
         loginButton = (Button) findViewById(R.id.main_login_btn);
         loadingBar = new ProgressDialog(this);
 
@@ -48,24 +47,14 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
-        joinNowButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v)
-            {
-                Intent intent = new Intent(MainActivity.this, RegisterActivity.class);
-                startActivity(intent);
-
-            }
-        });
-
-        String UserNameKey = Paper.book().read(Prevalent.UserNameKey);
+        String UserNipKey = Paper.book().read(Prevalent.UserNipKey);
         String UserPasswordKey = Paper.book().read(Prevalent.UserPasswordKey);
 
-        if (UserNameKey != "" && UserPasswordKey != "")
+        if (UserNipKey != "" && UserPasswordKey != "")
         {
-            if (!TextUtils.isEmpty(UserNameKey) && !TextUtils.isEmpty(UserPasswordKey))
+            if (!TextUtils.isEmpty(UserNipKey) && !TextUtils.isEmpty(UserPasswordKey))
             {
-                AllowAccess(UserNameKey, UserPasswordKey);
+                AllowAccess(UserNipKey, UserPasswordKey);
 
                 loadingBar.setTitle("Already Logged In");
                 loadingBar.setMessage("Please Wait...");
@@ -75,7 +64,7 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
-    private void AllowAccess(final String username, final String password) {
+    private void AllowAccess(final String nip, final String password) {
 
         final DatabaseReference RootRef;
         RootRef = FirebaseDatabase.getInstance().getReference();
@@ -83,11 +72,11 @@ public class MainActivity extends AppCompatActivity
         RootRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if (dataSnapshot.child("Users").child(username).exists())
+                if (dataSnapshot.child("Users").child(nip).exists())
                 {
-                    Users usersData = dataSnapshot.child("Users").child(username).getValue(Users.class);
+                    Users usersData = dataSnapshot.child("Users").child(nip).getValue(Users.class);
 
-                    if (usersData.getUsername().equals(username))
+                    if (usersData.getUsername().equals(nip))
                     {
                         if (usersData.getPassword().equals(password))
                         {
@@ -106,7 +95,7 @@ public class MainActivity extends AppCompatActivity
                 }
                 else
                 {
-                    Toast.makeText(MainActivity.this, "Account with this "+username+" number do not exists.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "Account with this "+nip+" number do not exists.", Toast.LENGTH_SHORT).show();
                     loadingBar.dismiss();
                 }
             }

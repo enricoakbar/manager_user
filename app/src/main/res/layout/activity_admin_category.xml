@@ -7,56 +7,54 @@
     tools:context=".AdminCategoryActivity"
     android:background="@drawable/background">
 
-
-    <LinearLayout
-        android:id="@+id/linear_category_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_centerHorizontal="true"
-        android:gravity="center"
-        android:layout_marginTop="25dp">
-
-
-        <ImageView
+    <ImageView
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginBottom="10dp"
+        android:id="@+id/registerpegawai"
+        android:layout_width="125dp"
+        android:layout_height="125dp"
+        android:src="@drawable/registerpegawai"
+        android:layout_alignParentLeft="true"/>
+    <ImageView
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginBottom="10dp"
         android:id="@+id/daftar_pegawai"
-        android:layout_width="wrap_content"
-        android:layout_height="70dp"
-        android:layout_marginLeft="40dp"
+        android:layout_width="125dp"
+        android:layout_height="125dp"
         android:src="@drawable/daftarpegawai"
+        android:layout_alignParentRight="true"
         />
-        <ImageView
-            android:id="@+id/news"
-            android:layout_width="wrap_content"
-            android:layout_height="80dp"
-            android:src="@drawable/news"
-            />
-
-    </LinearLayout>
-    <LinearLayout
-        android:id="@+id/linear_category_layout1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/linear_category_layout"
-        android:orientation="horizontal"
-        android:layout_centerHorizontal="true"
-        android:gravity="center"
-        android:layout_marginTop="50dp">
-
-        <ImageView
-            android:id="@+id/task"
-            android:layout_width="101dp"
-            android:layout_height="70dp"
-            android:layout_alignBottom="@+id/linear_category_layout1"
-            android:layout_marginRight="75dp"
-            android:src="@drawable/task" />
-        <ImageView
-            android:id="@+id/nilai"
-            android:layout_width="wrap_content"
-            android:layout_height="80dp"
-            android:src="@drawable/nilai"
-            />
-
-    </LinearLayout>
+    <ImageView
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginBottom="10dp"
+        android:id="@+id/news"
+        android:layout_width="125dp"
+        android:layout_height="125dp"
+        android:src="@drawable/news"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/registerpegawai"/>
+    <ImageView
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginBottom="10dp"
+        android:id="@+id/task"
+        android:layout_width="125dp"
+        android:layout_height="125dp"
+        android:src="@drawable/task"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/daftar_pegawai"/>
+    <ImageView
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="60dp"
+        android:layout_marginBottom="10dp"
+        android:id="@+id/nilai"
+        android:layout_width="125dp"
+        android:layout_height="125dp"
+        android:src="@drawable/nilai"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/news"/>
 
 </RelativeLayout>

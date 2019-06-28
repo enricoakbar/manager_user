@@ -42,7 +42,7 @@
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
         android:padding="20dp"
-        android:hint="Username Pegawai"
+        android:hint="Nama Pegawai"
         android:textColorHint="@color/abuabu"
         android:textColor="@color/coloritem"
         android:textStyle="italic"
