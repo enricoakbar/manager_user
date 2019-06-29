@@ -1,16 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <TextView
-        android:id="@+id/namapegawai"
-        android:textSize="25sp"
-        android:fontFamily="casual"
-        android:textAlignment="center"
-        android:text="Nama"
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    app:cardCornerRadius="12dp">
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/input_design"/>
+        android:layout_height="135dp"
+        android:orientation="vertical"
+        android:background="#DA583636"
+        android:padding="10dp">
+        <TextView
+            android:id="@+id/namapegawai"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:textColor="#D6CDCB"
+            android:text="Nama Pegawai"/>
+        <TextView
+            android:layout_marginTop="5dp"
+            android:id="@+id/nippegawai"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:textColor="#D6CDCB"
+            android:text="NIP Pegawai" />
+        <TextView
+            android:layout_marginTop="5dp"
+            android:id="@+id/userpegawai"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:textColor="#D6CDCB"
+            android:text="Username Pegawai" />
+        <TextView
+            android:layout_marginTop="5dp"
+            android:id="@+id/passwordpegawai"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:textColor="#D6CDCB"
+            android:text="Password Pegawai"/>
+    </LinearLayout>
 
-</RelativeLayout>
+
+
+</android.support.v7.widget.CardView>
