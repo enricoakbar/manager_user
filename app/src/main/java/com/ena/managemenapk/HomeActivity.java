@@ -1,5 +1,6 @@
 package com.ena.managemenapk;
 
+import android.content.ClipData;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -52,13 +53,12 @@ public class HomeActivity extends AppCompatActivity
         Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle("Home");
         setSupportActionBar(toolbar);
-
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                Intent intent = new Intent(HomeActivity.this, Tugas_A_Activity.class);
+                startActivity(intent);
             }
         });
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -162,7 +162,8 @@ public class HomeActivity extends AppCompatActivity
         }
         else if (id == R.id.nav_tugas)
         {
-
+            Intent intent = new Intent(HomeActivity.this, Tugas_A_Activity.class);
+            startActivity(intent);
         }
         else if (id == R.id.nav_nilai)
         {

@@ -12,11 +12,11 @@
         android:id="@+id/judultugaswajib"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginRight="30dp"
-        android:layout_marginBottom="25dp"
+        android:layout_marginStart="26dp"
+        android:layout_marginLeft="26dp"
+        android:layout_marginEnd="26dp"
+        android:layout_marginRight="26dp"
+        android:layout_marginBottom="15dp"
         android:background="@drawable/input_design"
         android:ems="10"
         android:hint="Judul Tugas Wajib"
@@ -33,11 +33,11 @@
         android:id="@+id/deskripsitugaswajib"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginLeft="28dp"
-        android:layout_marginEnd="28dp"
-        android:layout_marginRight="28dp"
-        android:layout_marginBottom="179dp"
+        android:layout_marginStart="26dp"
+        android:layout_marginLeft="26dp"
+        android:layout_marginEnd="26dp"
+        android:layout_marginRight="26dp"
+        android:layout_marginBottom="15dp"
         android:background="@drawable/input_design"
         android:ems="10"
         android:hint="Deskripsi Tugas Wajib"
@@ -47,16 +47,40 @@
         android:textColor="@color/coloritem"
         android:textColorHint="@color/abuabu"
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/tugaswajibbtn"
+        app:layout_constraintBottom_toTopOf="@+id/pointtugaswajib"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/judultugaswajib" />
+
+    <EditText
+        android:id="@+id/pointtugaswajib"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="26dp"
+        android:layout_marginLeft="26dp"
+        android:layout_marginEnd="26dp"
+        android:layout_marginRight="26dp"
+        android:layout_marginBottom="289dp"
+        android:background="@drawable/input_design"
+        android:ems="10"
+        android:hint="Point"
+        android:inputType="number"
+
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:textColor="@color/coloritem"
+        android:textColorHint="@color/abuabu"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/tugaswajibbtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/deskripsitugaswajib" />
 
     <Button
         android:id="@+id/tugaswajibbtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="46dp"
+        android:layout_marginBottom="47dp"
         android:background="@drawable/buttons"
         android:padding="10dp"
         android:text="Tambah Tugas Wajib"
@@ -64,7 +88,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/deskripsitugaswajib" />
+        app:layout_constraintTop_toBottomOf="@+id/pointtugaswajib" />
 
     <TextView
         android:id="@+id/usernametugaswajib"
@@ -80,4 +104,5 @@
         app:layout_constraintBottom_toTopOf="@+id/judultugaswajib"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
 </android.support.constraint.ConstraintLayout>

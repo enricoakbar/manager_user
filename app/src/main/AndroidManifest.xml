@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".TugasTambahanActivity"></activity>
+        <activity android:name=".Tugas_A_Activity"></activity>
+        <activity android:name=".TugasTambahanActivity" />
         <activity android:name=".TugasWajibActivity" />
         <activity android:name=".TambahTugasActivity" />
         <activity android:name=".ListPegawaiActivity" />

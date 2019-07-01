@@ -75,7 +75,7 @@ public class TambahTugasActivity extends AppCompatActivity {
                 if (dataSnapshot.child("Users").child(userName).exists()){
                     Users usersData = dataSnapshot.child("Users").child(userName).getValue(Users.class);
                     if (usersData.getUsername().equals(userName)){
-                        Toast.makeText(TambahTugasActivity.this, "Tugas Wajib", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(TambahTugasActivity.this, "Tugas Tambahan", Toast.LENGTH_SHORT).show();
                         progresBar.dismiss();
                         Intent intent = new Intent(TambahTugasActivity.this, TugasTambahanActivity.class);
                         Prevalent.currentOnlineUser = usersData;

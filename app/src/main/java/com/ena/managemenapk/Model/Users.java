@@ -1,23 +1,24 @@
 package com.ena.managemenapk.Model;
 
 public class Users {
-    public String username, nip, password, image, name, judultugaswajib, deskripsitugaswajib, judultugastambahan, deskripsitugastambahan;
+    public String username, nip, password, image, name, judultugas, deskripsitugas, keterangantugas, pointtugastambahan, pointtugaswajib;
 
     public Users()
     {
 
     }
 
-    public Users(String username, String nip, String password, String image, String name, String judultugaswajib, String deskripsitugaswajib, String judultugastambahan, String deskripsitugastambahan) {
+    public Users(String username, String nip, String password, String image, String name, String judultugas, String deskripsitugas, String keterangantugas, String pointtugastambahan, String pointtugaswajib) {
         this.username = username;
         this.nip = nip;
         this.password = password;
         this.image = image;
         this.name = name;
-        this.judultugaswajib = judultugaswajib;
-        this.deskripsitugaswajib = deskripsitugaswajib;
-        this.judultugastambahan = judultugastambahan;
-        this.deskripsitugastambahan = deskripsitugastambahan;
+        this.judultugas = judultugas;
+        this.deskripsitugas = deskripsitugas;
+        this.keterangantugas = keterangantugas;
+        this.pointtugastambahan = pointtugastambahan;
+        this.pointtugaswajib = pointtugaswajib;
     }
 
     public String getUsername() {
@@ -60,35 +61,43 @@ public class Users {
         this.name = name;
     }
 
-    public String getJudultugaswajib() {
-        return judultugaswajib;
+    public String getJudultugas() {
+        return judultugas;
     }
 
-    public void setJudultugaswajib(String judultugaswajib) {
-        this.judultugaswajib = judultugaswajib;
+    public void setJudultugas(String judultugas) {
+        this.judultugas = judultugas;
     }
 
-    public String getDeskripsitugaswajib() {
-        return deskripsitugaswajib;
+    public String getDeskripsitugas() {
+        return deskripsitugas;
     }
 
-    public void setDeskripsitugaswajib(String deskripsitugaswajib) {
-        this.deskripsitugaswajib = deskripsitugaswajib;
+    public void setDeskripsitugas(String deskripsitugas) {
+        this.deskripsitugas = deskripsitugas;
     }
 
-    public String getJudultugastambahan() {
-        return judultugastambahan;
+    public String getKeterangantugas() {
+        return keterangantugas;
     }
 
-    public void setJudultugastambahan(String judultugastambahan) {
-        this.judultugastambahan = judultugastambahan;
+    public void setKeterangantugas(String keterangantugas) {
+        this.keterangantugas = keterangantugas;
     }
 
-    public String getDeskripsitugastambahan() {
-        return deskripsitugastambahan;
+    public String getPointtugastambahan() {
+        return pointtugastambahan;
     }
 
-    public void setDeskripsitugastambahan(String deskripsitugastambahan) {
-        this.deskripsitugastambahan = deskripsitugastambahan;
+    public void setPointtugastambahan(String pointtugastambahan) {
+        this.pointtugastambahan = pointtugastambahan;
+    }
+
+    public String getPointtugaswajib() {
+        return pointtugaswajib;
+    }
+
+    public void setPointtugaswajib(String pointtugaswajib) {
+        this.pointtugaswajib = pointtugaswajib;
     }
 }

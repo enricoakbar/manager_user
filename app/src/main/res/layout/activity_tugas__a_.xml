@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    tools:context=".Tugas_A_Activity">
+
+       <TextView
+        android:id="@+id/tugas"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="28sp"
+        android:textAlignment="center"
+        android:textColor="@color/coloritem"
+        android:text="Tugas"
+           android:background="@drawable/drawable1"/>
+
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_marginTop="40dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/MyTugasRecyclerView">
+
+    </android.support.v7.widget.RecyclerView>
+
+</RelativeLayout>

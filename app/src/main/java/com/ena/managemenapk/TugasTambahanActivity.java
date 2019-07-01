@@ -18,7 +18,7 @@ import java.util.HashMap;
 
 public class TugasTambahanActivity extends AppCompatActivity {
     private TextView usernametugastambahan;
-    private EditText judultugastambahan, deskripsitugastambahan;
+    private EditText judultugastambahan, deskripsitugastambahan, pointtugastambahan;
     private Button tugastambahanbtn;
 
     @Override
@@ -28,6 +28,7 @@ public class TugasTambahanActivity extends AppCompatActivity {
         usernametugastambahan = (TextView)findViewById(R.id.usernametugastambahan);
         judultugastambahan = (EditText)findViewById(R.id.judultugastambahan);
         deskripsitugastambahan = (EditText)findViewById(R.id.deskripsitugastambahan);
+        pointtugastambahan = (EditText)findViewById(R.id.pointtugastambahan);
         tugastambahanbtn = (Button)findViewById(R.id.tugastambahanbtn);
 
         usernametugastambahan.setText(Prevalent.currentOnlineUser.getName());
@@ -48,6 +49,23 @@ public class TugasTambahanActivity extends AppCompatActivity {
             Toast.makeText(this, "Deskripsi Harap Isi", Toast.LENGTH_SHORT).show();
         }
         else{
+            tambahtugas();
+        }
+    }
+    private void tambahtugas(){
+        String judul = judultugastambahan.getText().toString();
+        String desc = deskripsitugastambahan.getText().toString();
+        String poin = pointtugastambahan.getText().toString();
+        if (TextUtils.isEmpty(judul)){
+            Toast.makeText(this, "Judul Harap Isi", Toast.LENGTH_SHORT).show();
+        }
+        else if (TextUtils.isEmpty(desc)){
+            Toast.makeText(this, "Deskripsi Harap Isi", Toast.LENGTH_SHORT).show();
+        }
+        else if (TextUtils.isEmpty(poin)){
+            Toast.makeText(this, "Poin Harap Isi", Toast.LENGTH_SHORT).show();
+        }
+        else{
             tambahtugastambahan();
         }
     }
@@ -55,9 +73,11 @@ public class TugasTambahanActivity extends AppCompatActivity {
     private void tambahtugastambahan() {
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Users");
         HashMap<String, Object> tambahtugas = new HashMap<>();
-        tambahtugas.put("judultugastambahan", judultugastambahan.getText().toString());
-        tambahtugas.put("deskripsitugastambahan", deskripsitugastambahan.getText().toString());
-        reference.child(Prevalent.currentOnlineUser.getUsername()).child("Tugas Tambahan").child(judultugastambahan.getText().toString()).updateChildren(tambahtugas);
+        tambahtugas.put("judultugas", judultugastambahan.getText().toString());
+        tambahtugas.put("deskripsitugas", deskripsitugastambahan.getText().toString());
+        tambahtugas.put("keterangantugas", "Tugas Tambahan");
+        tambahtugas.put("point", pointtugastambahan.getText().toString());
+        reference.child(Prevalent.currentOnlineUser.getUsername()).child("Tugas").child(judultugastambahan.getText().toString()).updateChildren(tambahtugas);
 
         Intent intent = new Intent(TugasTambahanActivity.this, AdminCategoryActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
