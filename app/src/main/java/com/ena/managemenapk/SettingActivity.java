@@ -33,7 +33,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class SettingActivity extends AppCompatActivity {
     private CircleImageView profileImageView;
-    private EditText nameEditText, nipEditText;
+    private EditText passwordEditText;
     private TextView profileChangeTextBtn, closeTextBtn, saveTextBtn;
     private Uri imageUri;
     private String myUrl = "";
@@ -47,13 +47,12 @@ public class SettingActivity extends AppCompatActivity {
         setContentView(R.layout.activity_setting);
         storageProfilePictureRef = FirebaseStorage.getInstance().getReference().child("Profile Picture");
         profileImageView = (CircleImageView) findViewById(R.id.setting_profile_image);
-        nameEditText = (EditText)findViewById(R.id.setting_name);
-        nipEditText = (EditText)findViewById(R.id.setting_nip);
+        passwordEditText = (EditText)findViewById(R.id.setting_name);
         profileChangeTextBtn = (TextView)findViewById(R.id.profil_image_change_btn);
         closeTextBtn = (TextView)findViewById(R.id.close_setting_btn);
         saveTextBtn = (TextView)findViewById(R.id.update_account_setting_btn);
 
-        userInfoDisplay(profileImageView, nameEditText, nipEditText);
+        userInfoDisplay(profileImageView, passwordEditText);
 
         closeTextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -89,8 +88,7 @@ public class SettingActivity extends AppCompatActivity {
     private void udateOnlyUserInfo() {
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Users");
         HashMap<String, Object> userMap = new HashMap<>();
-        userMap.put("name", nameEditText.getText().toString());
-        userMap.put("nip", nipEditText.getText().toString());
+        userMap.put("password", passwordEditText.getText().toString());
         ref.child(Prevalent.currentOnlineUser.getUsername()).updateChildren(userMap);
 
         startActivity(new Intent(SettingActivity.this, MainActivity.class));
@@ -117,11 +115,8 @@ public class SettingActivity extends AppCompatActivity {
     }
 
     private void userInfoSaved() {
-        if (TextUtils.isEmpty(nameEditText.getText().toString())){
+        if (TextUtils.isEmpty(passwordEditText.getText().toString())){
             Toast.makeText(this, "Harap Isi Nama.", Toast.LENGTH_SHORT).show();
-        }
-        else if (TextUtils.isEmpty(nipEditText.getText().toString())){
-            Toast.makeText(this, "Harap Isi NIP.", Toast.LENGTH_SHORT).show();
         }
         else if (checker.equals("clicked")){
             uploadImage();
@@ -162,8 +157,7 @@ public class SettingActivity extends AppCompatActivity {
                         DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Users");
 
                         HashMap<String, Object> userMap = new HashMap<>();
-                        userMap.put("name", nameEditText.getText().toString());
-                        userMap.put("nip", nipEditText.getText().toString());
+                        userMap.put("password", passwordEditText.getText().toString());
                         userMap.put("image", myUrl);
                         ref.child(Prevalent.currentOnlineUser.getUsername()).updateChildren(userMap);
 
@@ -187,7 +181,7 @@ public class SettingActivity extends AppCompatActivity {
         }
     }
 
-    private void userInfoDisplay(final CircleImageView profileImageView, final EditText nameEditText, final EditText nipEditText) {
+    private void userInfoDisplay(final CircleImageView profileImageView, final EditText nameEditText) {
         DatabaseReference UsersRef = FirebaseDatabase.getInstance().getReference().child("Users").child(Prevalent.currentOnlineUser.getUsername());
         UsersRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -197,12 +191,10 @@ public class SettingActivity extends AppCompatActivity {
                     if (dataSnapshot.child("image").exists())
                     {
                         String image = dataSnapshot.child("image").getValue().toString();
-                        String name = dataSnapshot.child("name").getValue().toString();
-                        String nip = dataSnapshot.child("nip").getValue().toString();
+                        String password = dataSnapshot.child("password").getValue().toString();
 
                         Picasso.get().load(image).into(profileImageView);
-                        nameEditText.setText(name);
-                        nipEditText.setText(nip);
+                        nameEditText.setText(password);
 
                     }
                 }

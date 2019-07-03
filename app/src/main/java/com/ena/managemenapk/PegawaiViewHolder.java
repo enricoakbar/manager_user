@@ -9,7 +9,7 @@ import android.widget.TextView;
 import com.ena.managemenapk.Interface.ItemClickListner;
 
 public class PegawaiViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-    public TextView nama, nip, username, password;
+    public TextView nama, nip, username, password, plusdetail, minusdetail;
     public ItemClickListner listener;
 
     @SuppressLint("WrongViewCast")
@@ -19,6 +19,29 @@ public class PegawaiViewHolder extends RecyclerView.ViewHolder implements View.O
         nip = (TextView)itemView.findViewById(R.id.nippegawai);
         username = (TextView)itemView.findViewById(R.id.userpegawai);
         password = (TextView)itemView.findViewById(R.id.passwordpegawai);
+        plusdetail = (TextView)itemView.findViewById(R.id.plusdetail);
+        minusdetail = (TextView)itemView.findViewById(R.id.minusdetail);
+
+        plusdetail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                nip.setVisibility(View.VISIBLE);
+                username.setVisibility(View.VISIBLE);
+                password.setVisibility(View.VISIBLE);
+                plusdetail.setVisibility(View.GONE);
+                minusdetail.setVisibility(View.VISIBLE);
+            }
+        });
+        minusdetail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                nip.setVisibility(View.GONE);
+                username.setVisibility(View.GONE);
+                password.setVisibility(View.GONE);
+                plusdetail.setVisibility(View.VISIBLE);
+                minusdetail.setVisibility(View.GONE);
+            }
+        });
     }
 
     public void setItemClick(ItemClickListner listener)

@@ -31,8 +31,6 @@ import java.util.ArrayList;
 public class ListPegawaiActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private DatabaseReference databaseReference;
-    public TextView nama, nip, username, password;
-    public ItemClickListner listener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,10 +63,13 @@ public class ListPegawaiActivity extends AppCompatActivity {
 
             @Override
             protected void onBindViewHolder(@NonNull PegawaiViewHolder holder, int position, @NonNull Users model) {
-                holder.nama.setText(model.getName());
-                holder.nip.setText(model.getUsername());
-                holder.username.setText(model.getNip());
-                holder.password.setText(model.getPassword());
+                holder.nama.setText("Nama   : "+model.getName());
+                holder.nip.setText("NIP   : "+model.getUsername());
+                holder.username.setText("Username   : "+model.getNip());
+                holder.password.setText("Password   : "+model.getPassword());
+                holder.plusdetail.setText("+");
+                holder.minusdetail.setText("-");
+
             }
         };
         recyclerView.setAdapter(firebaseRecyclerAdapter);
