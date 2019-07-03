@@ -1,14 +1,19 @@
 package com.ena.managemenapk;
 
+import android.content.Intent;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.ActionMode;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
 import android.widget.TextView;
 
 import com.ena.managemenapk.Interface.ItemClickListner;
@@ -22,6 +27,7 @@ import com.google.firebase.database.FirebaseDatabase;
 public class Tugas_A_Activity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private DatabaseReference databaseReference;
+    private TextView konfirmasi;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +35,14 @@ public class Tugas_A_Activity extends AppCompatActivity {
         setContentView(R.layout.activity_tugas__a_);
         databaseReference = FirebaseDatabase.getInstance().getReference().child("Users").child(Prevalent.currentOnlineUser.getUsername()).child("Tugas");
         databaseReference.keepSynced(true);
+        konfirmasi = (TextView)findViewById(R.id.Konfirmasi_Tugas);
+        konfirmasi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Tugas_A_Activity.this, KonfirmasiActivity.class);
+                startActivity(intent);
+            }
+        });
         recyclerView = (RecyclerView) findViewById(R.id.MyTugasRecyclerView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -62,6 +76,33 @@ public class Tugas_A_Activity extends AppCompatActivity {
         };
         recyclerView.setAdapter(firebaserecyclerAdapter);
         firebaserecyclerAdapter.startListening();
+
+        AbsListView.MultiChoiceModeListener modeListener = new AbsListView.MultiChoiceModeListener() {
+            @Override
+            public void onItemCheckedStateChanged(ActionMode mode, int position, long id, boolean checked) {
+
+            }
+
+            @Override
+            public boolean onCreateActionMode(ActionMode mode, Menu menu) {
+                return false;
+            }
+
+            @Override
+            public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
+                return false;
+            }
+
+            @Override
+            public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
+                return false;
+            }
+
+            @Override
+            public void onDestroyActionMode(ActionMode mode) {
+
+            }
+        };
     }
 
    /** @Override

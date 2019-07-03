@@ -12,7 +12,7 @@
     <LinearLayout
         android:id="@+id/tugasa"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_marginEnd="100dp"
         android:layout_marginRight="100dp"
         android:background="@color/merah_gelap"
@@ -42,7 +42,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_marginLeft="250dp"
         android:background="@color/putih"
         android:orientation="vertical">
@@ -50,14 +50,28 @@
         <TextView
             android:id="@+id/Ket_tugas"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:gravity="center_vertical"
             android:padding="5dp"
-            android:text="KeteranganTugas"
+            android:text="Keterangan Tugas"
             android:textAlignment="center"
             android:textColor="@color/merah_gelap"
             android:textSize="18sp"
             android:textStyle="bold" />
+        <TextView
+            android:id="@+id/Konfirmasi_Tugas"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="bottom"
+            android:gravity="bottom"
+            android:padding="5dp"
+            android:text="Konfirmasi"
+            android:textAlignment="center"
+            android:textColor="@color/merah_gelap"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+
 
     </LinearLayout>
 
