@@ -18,6 +18,17 @@
             android:textSize="18sp"
             android:textColor="#D6CDCB"
             android:text="Nama Pegawai"/>
+
+        <TextView
+            android:id="@+id/plusdetail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="+"
+            android:textAlignment="textEnd"
+            android:textColor="#D6CDCB"
+            android:textSize="30dp"
+            android:gravity="end" />
         <TextView
             android:layout_marginTop="5dp"
             android:id="@+id/nippegawai"
@@ -25,7 +36,8 @@
             android:layout_height="wrap_content"
             android:textSize="18sp"
             android:textColor="#D6CDCB"
-            android:text="NIP Pegawai" />
+            android:text="NIP Pegawai"
+            android:visibility="gone"/>
         <TextView
             android:layout_marginTop="5dp"
             android:id="@+id/userpegawai"
@@ -33,6 +45,7 @@
             android:layout_height="wrap_content"
             android:textSize="18sp"
             android:textColor="#D6CDCB"
+            android:visibility="gone"
             android:text="Username Pegawai" />
         <TextView
             android:layout_marginTop="5dp"
@@ -41,7 +54,20 @@
             android:layout_height="wrap_content"
             android:textSize="18sp"
             android:textColor="#D6CDCB"
+            android:visibility="gone"
             android:text="Password Pegawai"/>
+
+        <TextView
+            android:id="@+id/minusdetail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:text="-"
+            android:textAlignment="textEnd"
+            android:textColor="#D6CDCB"
+            android:textSize="50dp"
+            android:visibility="gone"
+            android:gravity="end" />
     </LinearLayout>
 
 
