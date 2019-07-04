@@ -16,12 +16,15 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import org.w3c.dom.Text;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.HashMap;
 
 public class TugasWajibActivity extends AppCompatActivity {
     private TextView usernametugaswajib;
     private EditText judultugaswajib, deskripsitugaswajib, pointtugaswajib;
     private Button tugaswajibbtn;
+    private String saveCurrentDate, saveCurrentTime;
 
 
     @Override
@@ -42,6 +45,12 @@ public class TugasWajibActivity extends AppCompatActivity {
                 tambahtugaswajibklik();
             }
         });
+        Calendar calendar = Calendar.getInstance();
+        SimpleDateFormat currentDate = new SimpleDateFormat("MMM dd, yyyy");
+        saveCurrentDate = currentDate.format(calendar.getTime());
+
+        SimpleDateFormat currentTime = new SimpleDateFormat("HH:mm:ss a");
+        saveCurrentTime = currentTime.format(calendar.getTime());
     }
 
     private void tambahtugaswajibklik() {
@@ -80,6 +89,8 @@ public class TugasWajibActivity extends AppCompatActivity {
         tambahtugas.put("deskripsitugas", deskripsitugaswajib.getText().toString());
         tambahtugas.put("point", pointtugaswajib.getText().toString());
         tambahtugas.put("keterangantugas", "Tugas Wajib");
+        tambahtugas.put("date", saveCurrentDate);
+        tambahtugas.put("time", saveCurrentTime);
         reference.child(Prevalent.currentOnlineUser.getUsername()).child("Tugas").child(judultugaswajib.getText().toString()).updateChildren(tambahtugas);
 
         Intent intent = new Intent(TugasWajibActivity.this, AdminCategoryActivity.class);

@@ -1,14 +1,14 @@
 package com.ena.managemenapk.Model;
 
 public class Users {
-    public String username, nip, password, image, name, judultugas, deskripsitugas, keterangantugas, pointtugastambahan, pointtugaswajib;
+    public String username, nip, password, image, name, judultugas, deskripsitugas, keterangantugas, pointtugastambahan, pointtugaswajib, date, time;
 
     public Users()
     {
 
     }
 
-    public Users(String username, String nip, String password, String image, String name, String judultugas, String deskripsitugas, String keterangantugas, String pointtugastambahan, String pointtugaswajib) {
+    public Users(String username, String nip, String password, String image, String name, String judultugas, String deskripsitugas, String keterangantugas, String pointtugastambahan, String pointtugaswajib, String date, String time) {
         this.username = username;
         this.nip = nip;
         this.password = password;
@@ -19,6 +19,8 @@ public class Users {
         this.keterangantugas = keterangantugas;
         this.pointtugastambahan = pointtugastambahan;
         this.pointtugaswajib = pointtugaswajib;
+        this.date = date;
+        this.time = time;
     }
 
     public String getUsername() {
@@ -99,5 +101,21 @@ public class Users {
 
     public void setPointtugaswajib(String pointtugaswajib) {
         this.pointtugaswajib = pointtugaswajib;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
     }
 }

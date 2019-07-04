@@ -1,9 +1,11 @@
 package com.ena.managemenapk;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.ena.managemenapk.Interface.ItemClickListner;
@@ -17,6 +19,7 @@ import com.google.firebase.database.ValueEventListener;
 
 public class TugasViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
     public TextView judulTugas, ketTugas, desTugas;
+    public TextView konfirmasi;
     public ItemClickListner listener;
     public DatabaseReference reference;
 
@@ -26,6 +29,7 @@ public class TugasViewHolder extends RecyclerView.ViewHolder implements View.OnC
         judulTugas = (TextView)tugasView.findViewById(R.id.tugas_wajib_judul);
         desTugas = (TextView)tugasView.findViewById(R.id.tugas_wajib_des);
         ketTugas = (TextView)tugasView.findViewById(R.id.Ket_tugas);
+        konfirmasi = (TextView)tugasView.findViewById(R.id.Konfirmasi_Tugas);
 
     }
     public void setItemClick(ItemClickListner listener)

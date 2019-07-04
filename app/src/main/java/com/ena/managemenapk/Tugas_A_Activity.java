@@ -27,7 +27,6 @@ import com.google.firebase.database.FirebaseDatabase;
 public class Tugas_A_Activity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private DatabaseReference databaseReference;
-    private TextView konfirmasi;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,14 +34,7 @@ public class Tugas_A_Activity extends AppCompatActivity {
         setContentView(R.layout.activity_tugas__a_);
         databaseReference = FirebaseDatabase.getInstance().getReference().child("Users").child(Prevalent.currentOnlineUser.getUsername()).child("Tugas");
         databaseReference.keepSynced(true);
-        konfirmasi = (TextView)findViewById(R.id.Konfirmasi_Tugas);
-        konfirmasi.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Tugas_A_Activity.this, KonfirmasiActivity.class);
-                startActivity(intent);
-            }
-        });
+
         recyclerView = (RecyclerView) findViewById(R.id.MyTugasRecyclerView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -71,68 +63,19 @@ public class Tugas_A_Activity extends AppCompatActivity {
                 holder.judulTugas.setText(model.getJudultugas());
                 holder.desTugas.setText(model.getDeskripsitugas());
                 holder.ketTugas.setText(model.getKeterangantugas());
+                holder.konfirmasi.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(Tugas_A_Activity.this, KonfirmasiActivity.class);
+                        startActivity(intent);
+                    }
+                });
             }
 
         };
         recyclerView.setAdapter(firebaserecyclerAdapter);
         firebaserecyclerAdapter.startListening();
-
-        AbsListView.MultiChoiceModeListener modeListener = new AbsListView.MultiChoiceModeListener() {
-            @Override
-            public void onItemCheckedStateChanged(ActionMode mode, int position, long id, boolean checked) {
-
-            }
-
-            @Override
-            public boolean onCreateActionMode(ActionMode mode, Menu menu) {
-                return false;
-            }
-
-            @Override
-            public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
-                return false;
-            }
-
-            @Override
-            public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
-                return false;
-            }
-
-            @Override
-            public void onDestroyActionMode(ActionMode mode) {
-
-            }
-        };
     }
-
-   /** @Override
-    protected void onResume() {
-        super.onResume();
-        FirebaseRecyclerOptions<Users> options =
-                new FirebaseRecyclerOptions.Builder<Users>()
-                        .setQuery(DataRef, Users.class)
-                        .build();
-
-        FirebaseRecyclerAdapter<Users, TugasViewHolder> fireBaserecyclerAdapter = new FirebaseRecyclerAdapter<Users, TugasViewHolder>(options) {
-            @NonNull
-            @Override
-            public TugasViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-                View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.desain_tugas_a, viewGroup, false);
-                TugasViewHolder Holder = new TugasViewHolder(v);
-                return Holder;
-            }
-
-            @Override
-            protected void onBindViewHolder(@NonNull TugasViewHolder Holder, int position, @NonNull Users model) {
-                Holder.judulTambahan.setText(model.getJudultugastambahan());
-                Holder.ketTambahan.setText(model.getDeskripsitugastambahan());
-            }
-
-        };
-        recyclerView.setAdapter(fireBaserecyclerAdapter);
-        fireBaserecyclerAdapter.startListening();
-    } **/
-
 }
 
 

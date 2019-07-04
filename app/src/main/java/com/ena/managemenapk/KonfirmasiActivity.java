@@ -31,7 +31,7 @@ public class KonfirmasiActivity extends AppCompatActivity {
         setContentView(R.layout.activity_konfirmasi);
 
         konfirBtn = (Button) findViewById(R.id.button_Konfirmasi);
-        desKonfir = (TextView) findViewById(R.id.des_txt);
+        desKonfir = (EditText) findViewById(R.id.des_txt);
         imageKonfir = (ImageView) findViewById(R.id.gambar_txt);
 
         konfirBtn.setOnClickListener((new View.OnClickListener() {
@@ -64,7 +64,5 @@ public class KonfirmasiActivity extends AppCompatActivity {
 
         final DatabaseReference konfRef = FirebaseDatabase.getInstance().getReference().child("Users")
                 .child(Prevalent.currentOnlineUser.getUsername()).child("Tugas");
-
-        HashMap<String, Object> ordersMap = new
     }
 }

@@ -14,12 +14,15 @@ import com.ena.managemenapk.Prevalent.Prevalent;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.HashMap;
 
 public class TugasTambahanActivity extends AppCompatActivity {
     private TextView usernametugastambahan;
     private EditText judultugastambahan, deskripsitugastambahan, pointtugastambahan;
     private Button tugastambahanbtn;
+    private String saveCurrentDate, saveCurrentTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +42,12 @@ public class TugasTambahanActivity extends AppCompatActivity {
                 tambahtugastambahanklik();
             }
         });
+        Calendar calendar = Calendar.getInstance();
+        SimpleDateFormat currentDate = new SimpleDateFormat("MMM dd, yyyy");
+        saveCurrentDate = currentDate.format(calendar.getTime());
+
+        SimpleDateFormat currentTime = new SimpleDateFormat("HH:mm:ss a");
+        saveCurrentTime = currentTime.format(calendar.getTime());
     }
 
     private void tambahtugastambahanklik() {
@@ -77,6 +86,8 @@ public class TugasTambahanActivity extends AppCompatActivity {
         tambahtugas.put("deskripsitugas", deskripsitugastambahan.getText().toString());
         tambahtugas.put("keterangantugas", "Tugas Tambahan");
         tambahtugas.put("point", pointtugastambahan.getText().toString());
+        tambahtugas.put("date", saveCurrentDate);
+        tambahtugas.put("time", saveCurrentTime);
         reference.child(Prevalent.currentOnlineUser.getUsername()).child("Tugas").child(judultugastambahan.getText().toString()).updateChildren(tambahtugas);
 
         Intent intent = new Intent(TugasTambahanActivity.this, AdminCategoryActivity.class);
