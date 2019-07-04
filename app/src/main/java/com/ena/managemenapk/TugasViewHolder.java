@@ -2,10 +2,12 @@ package com.ena.managemenapk;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.media.Image;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.ena.managemenapk.Interface.ItemClickListner;
@@ -21,7 +23,7 @@ public class TugasViewHolder extends RecyclerView.ViewHolder implements View.OnC
     public TextView judulTugas, ketTugas, desTugas;
     public TextView konfirmasi;
     public ItemClickListner listener;
-    public DatabaseReference reference;
+    public ImageView plustugas, minustugas;
 
     @SuppressLint("WrongViewCast")
     public TugasViewHolder (@NonNull View tugasView){
@@ -29,7 +31,26 @@ public class TugasViewHolder extends RecyclerView.ViewHolder implements View.OnC
         judulTugas = (TextView)tugasView.findViewById(R.id.tugas_wajib_judul);
         desTugas = (TextView)tugasView.findViewById(R.id.tugas_wajib_des);
         ketTugas = (TextView)tugasView.findViewById(R.id.Ket_tugas);
-        konfirmasi = (TextView)tugasView.findViewById(R.id.Konfirmasi_Tugas);
+        konfirmasi = (TextView) tugasView.findViewById(R.id.Konfirmasi_Tugas);
+        plustugas = (ImageView)tugasView.findViewById(R.id.plustugas);
+        minustugas = (ImageView)tugasView.findViewById(R.id.minustugas);
+
+        plustugas.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                desTugas.setVisibility(View.VISIBLE);
+                minustugas.setVisibility(View.VISIBLE);
+                plustugas.setVisibility(View.INVISIBLE);
+            }
+        });
+        minustugas.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                desTugas.setVisibility(View.GONE);
+                minustugas.setVisibility(View.INVISIBLE);
+                plustugas.setVisibility(View.VISIBLE);
+            }
+        });
 
     }
     public void setItemClick(ItemClickListner listener)

@@ -63,6 +63,8 @@ public class Tugas_A_Activity extends AppCompatActivity {
                 holder.judulTugas.setText(model.getJudultugas());
                 holder.desTugas.setText(model.getDeskripsitugas());
                 holder.ketTugas.setText(model.getKeterangantugas());
+                holder.plustugas.setImageResource(R.drawable.plus);
+                holder.minustugas.setImageResource(R.drawable.minus);
                 holder.konfirmasi.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {

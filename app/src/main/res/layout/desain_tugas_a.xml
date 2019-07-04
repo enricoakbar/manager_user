@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     app:cardCornerRadius="12dp"
     android:layout_margin="7dp">
-
 
     <LinearLayout
         android:id="@+id/tugasa"
@@ -17,15 +17,15 @@
         android:layout_marginRight="100dp"
         android:background="@color/merah_gelap"
         android:orientation="vertical">
-
         <TextView
             android:id="@+id/tugas_wajib_judul"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Tugas"
-            android:textAlignment="center"
+            android:textAlignment="gravity"
             android:textColor="@color/putih"
-            android:textSize="28sp" />
+            android:textSize="22sp"
+            android:layout_marginLeft="40dp"/>
 
         <TextView
             android:id="@+id/tugas_wajib_des"
@@ -33,13 +33,42 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:text="note"
+            android:textAlignment="gravity"
             android:padding="10dp"
-            android:textColor="#D6CDCB"
-            android:textSize="18sp" />
+            android:textColor="#000"
+            android:textSize="18sp"
+            android:visibility="gone"/>
 
 
     </LinearLayout>
 
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/plustugas"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:src="@drawable/plus"
+            app:layout_constraintBottom_toBottomOf="@+id/minustugas"
+            app:layout_constraintEnd_toEndOf="@+id/minustugas"
+            app:layout_constraintStart_toStartOf="@+id/minustugas"
+            app:layout_constraintTop_toTopOf="@+id/minustugas" />
+
+        <ImageView
+            android:id="@+id/minustugas"
+            android:layout_width="30dp"
+            android:layout_height="26dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginLeft="4dp"
+            android:layout_marginTop="4dp"
+            android:src="@drawable/minus"
+            android:visibility="invisible"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </android.support.constraint.ConstraintLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -70,9 +99,6 @@
             android:textColor="@color/merah_gelap"
             android:textSize="15sp"
             android:textStyle="bold" />
-
-
-
     </LinearLayout>
 
 </android.support.v7.widget.CardView>

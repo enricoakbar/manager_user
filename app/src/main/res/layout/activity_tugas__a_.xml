@@ -6,22 +6,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background"
+    android:background="@drawable/apaya"
     tools:context=".Tugas_A_Activity">
 
        <TextView
         android:id="@+id/tugas"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:textSize="28sp"
+           android:gravity="center"
         android:textAlignment="center"
-        android:textColor="@color/coloritem"
+        android:textColor="@color/putih"
         android:text="Tugas"
-           android:background="@drawable/drawable1"/>
+           android:background="#E73131"/>
 
 
     <android.support.v7.widget.RecyclerView
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="60dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/MyTugasRecyclerView">

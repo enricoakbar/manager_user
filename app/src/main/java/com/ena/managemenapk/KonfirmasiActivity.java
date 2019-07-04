@@ -1,5 +1,6 @@
 package com.ena.managemenapk;
 
+import android.content.Intent;
 import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -34,6 +35,14 @@ public class KonfirmasiActivity extends AppCompatActivity {
         desKonfir = (EditText) findViewById(R.id.des_txt);
         imageKonfir = (ImageView) findViewById(R.id.gambar_txt);
 
+/**        imageKonfir.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
+                OpenGallery();
+            }
+        }); **/
+
         konfirBtn.setOnClickListener((new View.OnClickListener() {
             @Override
             public void onClick(View v)
@@ -65,4 +74,8 @@ public class KonfirmasiActivity extends AppCompatActivity {
         final DatabaseReference konfRef = FirebaseDatabase.getInstance().getReference().child("Users")
                 .child(Prevalent.currentOnlineUser.getUsername()).child("Tugas");
     }
+   /** private  void OpenGallery()
+    {
+        Intent galleryIntent,
+    }**/
 }
