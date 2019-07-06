@@ -1,10 +1,14 @@
 package com.ena.managemenapk;
 
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v7.app.AlertDialog;
+import android.support.v7.widget.AlertDialogLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -36,9 +40,10 @@ import io.paperdb.Paper;
 public class HomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener
 {
+    LinearLayoutManager layoutmanager;
+    SharedPreferences sharedPreferences;
     private DatabaseReference NewsRef;
     private RecyclerView recyclerView;
-    RecyclerView.LayoutManager layoutManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +51,19 @@ public class HomeActivity extends AppCompatActivity
         setContentView(R.layout.activity_home);
 
         NewsRef = FirebaseDatabase.getInstance().getReference().child("Judul");
+
+        sharedPreferences = getSharedPreferences("SortSettings", MODE_PRIVATE);
+        String Sorting = sharedPreferences.getString("Sort", "terbaru");
+        if (Sorting.equals("terbaru")){
+            layoutmanager = new LinearLayoutManager(this);
+            layoutmanager.setReverseLayout(true);
+            layoutmanager.setStackFromEnd(true);
+        }
+        else if ((Sorting.equals("terlama"))){
+            layoutmanager = new LinearLayoutManager(this);
+            layoutmanager.setReverseLayout(false);
+            layoutmanager.setStackFromEnd(false);
+        }
 
         Paper.init(this);
 
@@ -80,8 +98,7 @@ public class HomeActivity extends AppCompatActivity
 
         recyclerView = findViewById(R.id.recycler_menu);
         recyclerView.setHasFixedSize(true);
-        layoutManager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setLayoutManager(layoutmanager);
     }
 
     @Override
@@ -143,11 +160,37 @@ public class HomeActivity extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-       // if (id == R.id.action_settings) {
-        //    return true;
-        //}
+        if (id == R.id.action_settings) {
+            showSortDialog();
+            return true;
+        }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private void showSortDialog() {
+        String[] sortOption = {"Terbaru", "Terlama"};
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Sort By :");
+        builder.setIcon(R.drawable.ic_action_sort);
+        builder.setItems(sortOption, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        if (i==0){
+                            SharedPreferences.Editor editor = sharedPreferences.edit();
+                            editor.putString("Sort", "terbaru");
+                            editor.apply();
+                            recreate();
+                        }
+                        else if(i==1){
+                            SharedPreferences.Editor editor = sharedPreferences.edit();
+                            editor.putString("Sort", "terlama");
+                            editor.apply();
+                            recreate();
+                        }
+                    }
+                });
+        builder.show();
     }
 
     @SuppressWarnings("StatementWithEmptyBody")
